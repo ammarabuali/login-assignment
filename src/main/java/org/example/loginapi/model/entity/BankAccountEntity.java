@@ -1,6 +1,7 @@
 package org.example.loginapi.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
@@ -29,6 +30,7 @@ public class BankAccountEntity {
 
     @NotBlank(message = "IBAN can't be left empty")
     @Pattern(regexp = "^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$", message = "Invalid IBAN format")
+    @Schema(example = "DE1234567890")
     private String iban;
 }
 
