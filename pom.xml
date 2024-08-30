@@ -99,13 +99,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- OpenFeign -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>4.1.3</version>
-        </dependency>
-
         <!-- MapStruct -->
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -132,6 +125,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.3.0</version> <!-- Or the latest version -->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
