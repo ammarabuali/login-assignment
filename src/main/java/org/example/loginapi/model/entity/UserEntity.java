@@ -47,4 +47,10 @@ public class UserEntity {
             message = "Password must contain at least one digit, one lowercase letter, one uppercase letter, and one special character")
     @Schema(example = "Password123!")
     private String password;
+
+    @JsonIgnore
+    private String[] roles;
+    @JsonIgnore
+    private String[] permissions;
+
 }

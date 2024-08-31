@@ -13,6 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -29,7 +32,10 @@ public class AuthServiceImpl implements AuthService {
             if (!passwordEncoder.matches(userCredentials.getPassword(), user.getPassword())) {
                 throw new InvalidPasswordException("Wrong Credentials!, \nusername or password is incorrect ");
             }
-            return AuthResponse.builder().token(jwtService.generateToken(userCredentials.getEmail())).build();
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("role", user.getRoles());
+            claims.put("permissions", user.getPermissions());
+            return AuthResponse.builder().token(jwtService.generateToken(userCredentials.getEmail(), claims)).build();
         } catch (InvalidPasswordException e) {
             log.error("Invalid password or username!");
             return new AuthResponse();
